@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { Contenedor, Heading, Imagen } from "./StylesComonents/ContenedorStyle";
+import imagen from "./cryptomonedas.png";
+import { Formulario } from "./components/Formulario";
+import { useState, useEffect } from "react";
+import { consultarPrecio } from "./helpers";
+import { Cotizacion } from "./components/Cotizacion";
 
 function App() {
+  const [data, guardarData] = useState({
+    moneda: "",
+    criptomoneda: "",
+  });
+  const [resultado, guardarResultado] = useState({});
+  const { moneda, criptomoneda } = data;
+  useEffect(() => {
+    if (moneda === "") {
+      return null;
+    }
+    consultarPrecio(criptomoneda, moneda).then((data) =>
+      guardarResultado(data.DISPLAY[criptomoneda][moneda])
+    ) 
+  }, [moneda, criptomoneda]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Contenedor>
+      <div>
+        <Imagen src={imagen} alt="Imagen Crypto" />
+      </div>
+      <div>
+        <Heading>Cotiza Criptomonedas al Instante</Heading>
+        <Formulario guardarData={guardarData} />
+        <Cotizacion
+          resultado={resultado}
+        />
+      </div>
+    </Contenedor>
   );
 }
 

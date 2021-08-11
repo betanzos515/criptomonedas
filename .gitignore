@@ -21,3 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD
+
+https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD
