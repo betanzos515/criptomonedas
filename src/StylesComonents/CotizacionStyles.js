@@ -10,8 +10,8 @@ export const ResultadoDiv = styled.div`
     border: 3px solid gray;
 
     p{
-        margin:0;
-        line-height: 1.8;
+       margin: 0;
+       line-height: 1.8;
     }
 `;
 
