@@ -2,8 +2,7 @@ import React from 'react'
 import { Info, Precio, ResultadoDiv } from '../StylesComonents/CotizacionStyles';
 
 export const Cotizacion = ({ resultado }) => {
-    if(Object.keys(resultado).length === 0) return null;
-
+    if(Object.keys(resultado).length === 0) return null    
     return (
         <ResultadoDiv>
             <Precio>El precio es: <span>{resultado.PRICE}</span></Precio>        
